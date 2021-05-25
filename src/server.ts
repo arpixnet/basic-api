@@ -4,15 +4,16 @@ import compression from 'compression';
 import cors from 'cors';
 import morgan from 'morgan';
 import apiRoutes from './routes/api.routes';
+import config from "./config/config";
 
 // Init
 const server: Application = express();
 
 // Settings
-server.set('port', process.env.PORT || 3000);
+server.set('port', config.SERVER.PORT);
 const corsOptions = {
-    origin: process.env.CORS_ORIGIN || '*',
-    credentials: (process.env.CORS_CREDENTIALS === 'true')
+    origin: config.CORS.CORS_ORIGIN,
+    credentials: (config.CORS.CORS_CREDENTIALS)
 };
 
 // Middlewares
